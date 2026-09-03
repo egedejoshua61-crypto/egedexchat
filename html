@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOOD SOCIAL</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="blood-theme">
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <h1 class="brand">BLOOD <span>SOCIAL</span></h1>
+        <div class="nav-icons">
+            <button id="searchBtn">🔍</button>
+            <button id="profileBtn"><img src="avatar.png" id="myAvatar"></button>
+        </div>
+    </nav>
+
+    <!-- Main Tabs -->
+    <div class="tabs">
+        <button class="active" onclick="showTab('chats')">CHATS</button>
+        <button onclick="showTab('updates')">UPDATES</button>
+        <button onclick="showTab('calls')">CALLS</button>
+    </div>
+
+    <!-- Chat List -->
+    <main id="chatList" class="scroll-area">
+        <!-- Dynamic Content -->
+        <div class="conversation" onclick="openChat('user123')">
+            <div class="avatar-wrapper">
+                <img src="user.jpg">
+                <div class="online-indicator"></div>
+            </div>
+            <div class="chat-info">
+                <h4>Joshua Egede <span class="badge-verified">✓</span></h4>
+                <p>Hey, did you see the update?</p>
+            </div>
+            <div class="chat-meta">
+                <span>12:45 PM</span>
+                <div class="unread-count">2</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="newChat">+</button>
+
+    <!-- Chat Window (Overlay for Mobile) -->
+    <div id="chatOverlay" class="hidden">
+        <header>
+            <button onclick="closeChat()">←</button>
+            <img src="" id="chatAvatar">
+            <h3 id="chatName">User</h3>
+            <div class="call-btns">
+                <button onclick="startCall('audio')">📞</button>
+                <button onclick="startCall('video')">📹</button>
+            </div>
+        </header>
+        <div id="messageDisplay"></div>
+        <div class="input-area">
+            <button id="mediaBtn">+</button>
+            <input type="text" placeholder="Type a message...">
+            <button id="sendBtn">➤</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
